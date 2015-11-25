@@ -4,6 +4,7 @@ offset = 0;
 limit = 10;
 key = "dc6zaTOxFJmzC";
 url = "http://api.giphy.com/v1/gifs/search?q="+searchTerm+"&api_key="+key+"&limit="+limit+"&offset="+offset;
+$("body").append($("<img src=http://giphy.com/gifs/robot-valvrave-harakiri-DUG89FKzbL5Bu />"))
 
 $('form').on('submit', function(e) {
 
@@ -17,8 +18,10 @@ $('form').on('submit', function(e) {
       type: "get",
       dataType: "json"
   }).done(function(response){
-      console.log(response.data[0].embed_url)
-      $("body").append($("<img src="+ response.data[0].url +"</img>"))
+      console.log(response.data[0])
+      newImg = $("<img src ='' />");
+      newImg.attr('src', response.data[0].url)
+      $("body").append(newImg)
 
   }).fail(function(){
       console.log("Ajax request fails!")
