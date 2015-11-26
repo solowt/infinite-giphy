@@ -23,9 +23,7 @@ function ajaxCall(offset) {
     //draw the images based on the response from the call
     for(var i = 0; i<10; i++){
       if (response.data[i]){
-        newImg = $("<img class="+searchTerm+" src ='' />"); //draw image, set class to be search term
-        newImg.attr('src', response.data[i].images.original.url)
-        $("body").append(newImg)
+        $("body").append($("<img class="+searchTerm+" src ="+response.data[i].images.original.url+" />")); //draw image, set class to be search term
       }else {
         //return if the total number of images is reached, aka the index is invalid.
         return;
